@@ -14,10 +14,10 @@ This is not supposed to be a *replacement* for Komens, it's just a way to get no
 
 You have to set the following environmental variables or manually change `config.js`. 
 ```
-export CK_DISCORD_WEBHOOK
-export CK_BAKALARI_URL
-export CK_BAKALARI_USER
-export CK_BAKALARI_PASSWORD
+export DISCORD_WEBHOOK
+export BAKALARI_URL
+export BAKALARI_USER
+export BAKALARI_PASSWORD
 ```
 In `config.js` you can also change various settings like the checking period or the location of the history JSON. 
 
