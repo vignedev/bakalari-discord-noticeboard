@@ -64,7 +64,7 @@ function createEmbed(data){
         description: data.text,
         color: 14832449,
         timestamp: parseTime(data.cas).toISOString(),
-        footer: { text: data.id + ` | ${data.files}` },
+        footer: { text: data.id + ` | ${data.files} attachments` },
         author: { name: data.od }
     }
 }
