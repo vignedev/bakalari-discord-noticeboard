@@ -146,6 +146,7 @@ async function mainClock() {
                 // if it's the same then don't post it
             }
         }
+        unique.reverse()
         for(let i in unique){
             await sendWebhook([createEmbed(unique[i])])
         }
