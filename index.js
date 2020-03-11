@@ -14,6 +14,8 @@ let
 ;(async() => {
     const user = await safelyObtainUser()
     if(user == null) process.exit(2)
+
+    mainClock()
     setInterval(mainClock, config.CHECK_INTERVAL)
 })()
 
