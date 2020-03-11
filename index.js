@@ -59,7 +59,7 @@ async function getNoticeboard(){
  * Create a embed JSON
  */
 function createEmbed(data){
-    return  {
+    let embed = {
         title: data.nadpis,
         description: data.text,
         color: 14832449,
@@ -67,6 +67,12 @@ function createEmbed(data){
         footer: { text: data.id + ` | ${data.files} attachments` },
         author: { name: data.od }
     }
+    let size = JSON.stringify(embed).length
+    if(size > 6000-2){
+        embed.description = embed.description.substring(0, size-6000-4) + '…' //safety precaution
+        print(`    ${data.id} is too long, cropping…`)
+    }
+    return embed
 }
 /**
  * Parse datetime to Date Object
@@ -148,7 +154,8 @@ async function mainClock() {
         }
         unique.reverse()
         for(let i in unique){
-            await sendWebhook([createEmbed(unique[i])])
+            log(`    ${i}: `, await sendWebhook([createEmbed(unique[i])]))
+            await wait(1000)
         }
         await fs.writeFile(config.HISTORY_PATH, JSON.stringify(data))
 
@@ -156,4 +163,12 @@ async function mainClock() {
     }catch(err){elog(err)}
     isWorking = false
     log('Cycle ended')
+}
+
+/**
+ * Waits a specific amount of miliseconds
+ * @param {number} ms Amount to wait
+ */
+function wait(ms){
+    return new Promise((resolve) => setTimeout(resolve, ms))
 }
