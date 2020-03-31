@@ -12,6 +12,7 @@
   "dependencies": {
     "ansi-colors": "^4.1.1",
     "bakalari": "vignedev/bakalari-js",
+    "html-entities": "^1.2.1",
     "html-to-markdown": "^1.0.0",
     "node-fetch": "^2.6.0"
   },
@@ -19,7 +20,7 @@
     "@types/node": "^13.9.0"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/vignette/bakalari-discord-noticeboard.git"
+    "type": "git",
+    "url": "https://github.com/vignette/bakalari-discord-noticeboard.git"
   }
 }

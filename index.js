@@ -4,7 +4,8 @@ const
     bakalari = require('bakalari'),
     { log, elog } = require('./log'),
     fs = require('fs').promises,
-    html2md = require('html-to-markdown')
+    html2md = require('html-to-markdown'),
+    entities = new (require('html-entities')).AllHtmlEntities()
 
 const
     baka = new bakalari.User(config.BAKALARI_URL, config.BAKALARI_USER, config.BAKALARI_PASSWORD)
@@ -45,13 +46,15 @@ async function getNoticeboard(){
         const obj = {}
         for(let key in val) obj[key] = val[key][0]
         acc[obj.id] = obj
-        obj.text = html2md.convert(obj.text)
-        .replace(/&nbsp;/g, ' ')
-        .replace(/<br \/>/gi, '\n\n')
-        .replace(/\n+/g, '\n\n')
-        .replace(/<.*?>/g, '')
-        .replace(/ +/g, ' ')
-        .trim()
+        obj.text = entities.decode(
+            html2md.convert(obj.text)
+            .replace(/&nbsp;/g, ' ')
+            .replace(/<br \/>/gi, '\n\n')
+            .replace(/\n+/g, '\n\n')
+            .replace(/<.*?>/g, '')
+            .replace(/ +/g, ' ')
+            .trim()
+        )
         return acc
     }, {})
 }
