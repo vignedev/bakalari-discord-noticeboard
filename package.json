@@ -14,7 +14,7 @@
     "bakalari": "vignedev/bakalari-js",
     "html-entities": "^1.2.1",
     "html-to-markdown": "^1.0.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^3.1.1"
   },
   "devDependencies": {
     "@types/node": "^13.9.0"
